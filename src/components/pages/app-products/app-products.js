@@ -70,57 +70,6 @@ function AppProducts() {
   const params = useParams();
   const groupEn = params.group;
   const group = getGroupName(groupEn);
- 
-
-  /*  constructor(props) {
-    super(props);
-    this.state = {
-      group:"",
-      productList: [
-        {
-          name: "название1",
-          photo: "/images/product/FA220R.jpg",
-          smallDescr:
-            "Пристрій для заточування ножа зємний (FY)/фіксований (FA) Дуже міцний",
-          price: "14000,00",
-        },
-        {
-          name: "название2",
-          photo: "/images/product/FA220R.jpg",
-          smallDescr:
-            "Пристрій для заточування ножа зємний (FY)/фіксований (FA) Дуже міцний",
-          price: "14000,00",
-        },
-        {
-          name: "название3",
-          photo: "/images/product/FA220R.jpg",
-          smallDescr:
-            "Пристрій для заточування ножа зємний (FY)/фіксований (FA) Дуже міцний",
-          price: "14000,00",
-        },
-        {
-          name: "название4",
-          photo: "/images/product/FA220R.jpg",
-          smallDescr:
-            "Пристрій для заточування ножа зємний (FY)/фіксований (FA) Дуже міцний",
-          price: "14000,00",
-        },
-        {
-          name: "название5",
-          photo: "/images/product/FA220R.jpg",
-          smallDescr:
-            "Пристрій для заточування ножа зємний (FY)/фіксований (FA) Дуже міцний",
-          price: "14000,00",
-        },
-      ],
-    };
-  }
-  
-
-  render() {
-     */
-
-  /* const group = this.props.match.params.group; */
   return (
     <div className="container product" id="productMain">
       <div className="row justify-content-between mr-1">

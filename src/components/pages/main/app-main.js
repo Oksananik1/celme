@@ -2,9 +2,6 @@
 import AppProductList from "./modules/app-product-list"
 
 
-
-
-
 const AppMain=()=>{
     return(
         <>
@@ -50,7 +47,6 @@ const AppMain=()=>{
                 </div>
             </div>
          <AppProductList/>
-        
          </>
     )
 }

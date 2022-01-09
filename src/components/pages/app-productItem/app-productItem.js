@@ -23,14 +23,6 @@ function Feature(props){
 
 
  function AppProductItem()  {
-   /*  constructor(props){
-        super(props);
-        this.state={
-            error: null,
-            isLoaded: false,
-            product:{ }
-        }
-    } */
     const params = useParams();
     const id = params.id;
     const [error, setError] = useState(null);

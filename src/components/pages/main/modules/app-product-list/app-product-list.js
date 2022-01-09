@@ -62,7 +62,6 @@ function ProductList(props) {
     return <div className="row justify-content-between mb-5">{data}</div>;
   }
 }
-
 class AppProductList extends Component {
   constructor(props) {
     super(props);

@@ -21,8 +21,7 @@ const App = () => {
       <Router>
       <div className="content">
           <AppHeader/>
-          
-        {/* <Link to="/about" className={({ isActive }) => (isActive ? " active" : "")}>О сайте</Link> */}
+      
         <Routes>
           <Route path="/" element={<AppMain />} />;
           <Route path="/about" element={<AppONas />} />;
@@ -34,7 +33,6 @@ const App = () => {
           <Route path="/products" element={<AppProducts/>} />;
           <Route path="*" element={<NotFound/>} />;
           <Route path="/feedback" element={<Feedback/>} />;
-
 
         </Routes>
         </div>

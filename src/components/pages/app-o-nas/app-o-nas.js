@@ -1,6 +1,6 @@
 const AppONas = () => {
   return (
-<div className="container oNAS" id="proNasMain">
+<div className="container oNAS">
       <div className="row">
         <div className="col-12 mb-4 kontZagol text-center">
           <h2>Про нас</h2>

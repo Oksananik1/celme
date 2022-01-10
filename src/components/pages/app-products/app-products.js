@@ -14,9 +14,9 @@ function Product(props) {
         <div className="card-body cardText">
           <h5 className="card-title">{props.value.name}</h5>
           <p className="card-text">
-            Призначена для нарізки салямі, шинки, м'яса, сирів, овочів.
+            {props.value.smallDescr}
           </p>
-          <h5 className="priceNumb">14000,00</h5>
+          <h5 className="priceNumb">{props.value.price}</h5>
           <Link to={"/productItem/"+props.value._id} className="btn prodBtn">
             Детальніше
           </Link>

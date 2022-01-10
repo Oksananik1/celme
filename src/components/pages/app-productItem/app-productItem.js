@@ -72,7 +72,7 @@ function Feature(props){
               <p>
               {product.descr}
               </p>
-              <h5 className="colorTxt mt-4">{product.price} грн.</h5>
+              <h5 className="colorTxt mt-4">{product.price}</h5>
             </div>
           </div>
         </div>

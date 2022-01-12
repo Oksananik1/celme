@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom";
+import { Link , NavLink} from "react-router-dom";
 
 
 const AppHeader=()=>{
@@ -7,31 +7,34 @@ const AppHeader=()=>{
         <><div className="container-fluid menu bg-light">
             <div className="row menu">
                 <div className="col-12">
-                    <nav className="navbar navbar-light bg-light">
-                   
-                    <Link to={'/'}   className="navbar-brand">
+                    <nav className="navbar bg-light headerNav">
+                        <div>
+                    <Link to={'/'}   className="navbar-brand headLogo">
                     <img src="/images/logo2.png" alt="logo" />
                         </Link>
-                        <ul className="nav justify-content-end menuUl">
+                        </div>
+                        <div className="headerNavMenu">
+                        <ul className="nav menuUl">
                             <li className="nav-item">
-                                <Link  to={'/about'} className="nav-link active menu">ПРО НАС</Link>
+                                <NavLink  to={'/about'} className={({ isActive }) => (isActive ? 'nav-link menu active1' : 'nav-link menu')}>ПРО НАС</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/'} className="nav-link menu">АКЦІЇ</Link>
+                                <NavLink to={'/'} className={({ isActive }) => (isActive ? 'nav-link menu active1' : 'nav-link menu')}>АКЦІЇ</NavLink>
                             </li> 
                             <li className="nav-item">
-                                <Link to={'/products/slicers'} className="nav-link menu">ПРОДУКЦІЯ</Link>
+                                <NavLink to={'/products/slicers'} className={({ isActive }) => (isActive ? 'nav-link menu active1' : 'nav-link menu')}>ПРОДУКЦІЯ</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/garant'} className="nav-link menu">ГАРАНТІЯ</Link>
+                                <NavLink to={'/garant'} className={({ isActive }) => (isActive ? 'nav-link menu active1' : 'nav-link menu')}>ГАРАНТІЯ</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/dostavka'} className="nav-link menu">ДОСТАВКА ТА ОПЛАТА</Link>
+                                <NavLink to={'/dostavka'} className={({ isActive }) => (isActive ? 'nav-link menu active1' : 'nav-link menu')}>ДОСТАВКА ТА ОПЛАТА</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/contact'} className="nav-link menu">КОНТАКТИ</Link>
+                                <NavLink to={'/contact'} className={({ isActive }) => (isActive ? 'nav-link menu active1' : 'nav-link menu')}>КОНТАКТИ</NavLink>
                             </li>
                         </ul>
+                        </div>
                         <div className="dropdown">
                             <button className="btn dropdown-toggle burgerMenu" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

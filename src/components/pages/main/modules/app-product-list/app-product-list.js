@@ -1,27 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Product from "../../../../modules/product"
 
-function Product(props) {
-  return (
-    <div className="col-lg-3 col-md-6 col-sm-12 prodVid">
-      <div className="card cardWidth">
-        <img
-          src={props.value.photo}
-          className="card-img-top "
-          alt={props.value.name}
-        ></img>
-        <div className="card-body cardText">
-          <h5 className="card-title">{props.value.name}</h5>
-          <p className="card-text">{props.value.smallDescr}</p>
-          <h5 className="priceNumb">{props.value.price}</h5>
-          <Link to={"/productItem/"+props.value._id} className="btn prodBtn">
-            Детальніше
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 
 
@@ -77,7 +56,7 @@ class AppProductList extends Component {
 
   render() {
     return (
-      <div className="container product" id="productMain">
+      <div className="container product">
         <div className="row justify-content-between mr-1">
           <div>
             <h2 className="kontZagol">Наш товар</h2>
@@ -87,14 +66,13 @@ class AppProductList extends Component {
               <li className="nav-item">
                 <a
                   href="#slayser"
-                  className="nav-link active1 menu active"
+                  className="nav-link menu active"
                   id="slayser-tab"
                   data-toggle="tab"
                   role="tab"
                   aria-controls="slayser"
                   aria-selected="true"
-                >
-                  Слайсери
+                ><span>Слайсери</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -106,8 +84,7 @@ class AppProductList extends Component {
                   role="tab"
                   aria-controls="myasorubka"
                   aria-selected="false"
-                >
-                  М'ясорубки
+                ><span>М'ясорубки</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -119,8 +96,7 @@ class AppProductList extends Component {
                   role="tab"
                   aria-controls="kuttery"
                   aria-selected="false"
-                >
-                  Куттери
+                ><span>Куттери</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -132,8 +108,7 @@ class AppProductList extends Component {
                   role="tab"
                   aria-controls="ovocherezka"
                   aria-selected="false"
-                >
-                  Овочерізки
+                ><span>Овочерізки</span>
                 </a>
               </li>
               <li className="nav-item">
@@ -145,8 +120,7 @@ class AppProductList extends Component {
                   role="tab"
                   aria-controls="oblPizza"
                   aria-selected="false"
-                >
-                  Обладнання для піцерії
+                ><span>Обладнання для піцерії</span>
                 </a>
               </li>
             </ul>
@@ -213,7 +187,7 @@ class AppProductList extends Component {
             </div>
           </div>
 
-          <div>
+          <div className="mt-3">
             <div className="tab-content" id="myTabContent">
               <div
                 className="tab-pane fade show active"

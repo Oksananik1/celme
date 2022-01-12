@@ -6,16 +6,16 @@
 html {
     position: relative;
     min-height: 100%;
-  }
-  body {
+}
+
+body {
     margin-bottom: 90px;
-  }
+}
 
 
 .menu {
     color: rgb(63, 61, 61);
     text-decoration: none;
-    
 }
 
 .menu:hover {
@@ -32,6 +32,20 @@ html {
 .menuLogo {
     display: inline;
 }
+
+.headLogo{
+    width: 150px;
+}
+
+.headerNav{
+    justify-content: normal
+}
+
+.headerNavMenu{
+    margin-left: auto;
+}
+
+
 
 .logoBig {
     display: flex;
@@ -54,14 +68,21 @@ html {
 }
 
 .zakazBtn {
-    width: 150px;
-    height: 40px;
     background-color: rgb(245, 60, 60);
     border: 1px solid rgb(245, 60, 60);
     border-radius: 10px;
     color: rgb(73, 71, 71);
     text-decoration: none;
     font-size: 17px;
+}
+
+.zakazBtn img{
+    width: 17px;
+    margin-right: 10px;
+}
+
+.zakazBtnStrelka{
+    width: 300px;
 }
 
 .zakazBtn:hover {
@@ -85,16 +106,27 @@ html {
 
 .product {
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     font-size: 17px;
+}
+
+.photoProdukt {
+    width: 100%;
+    height: 293px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .active1 {
     color: rgb(245, 60, 60);
 }
 
+.nav-item>.active>span {
+    color: rgb(245, 60, 60);
+}
+
 .prodVid {
-    margin-top: 40px;
     margin-bottom: 30px;
 }
 
@@ -108,22 +140,34 @@ html {
     margin-right: 10px;
 }
 
-/* .burgerMenuBtn {
-    width: 180px;
-} */
+
+.prodBtnDiv {
+    width: 100%;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.cardPrice{
+    text-align: center;
+    margin-top: 15px;
+}
 
 
 .prodBtn {
     width: 140px;
+    height: 40px;
     background-color: rgb(245, 60, 60);
     border: 1px solid rgb(245, 60, 60);
     border-radius: 10px;
-    margin-top: 20px;
     color: rgb(73, 71, 71);
 }
 
 .cardText {
     font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .priceNumb {
@@ -132,6 +176,7 @@ html {
 
 .cardWidth {
     width: 100%;
+    height: 100%;
 }
 
 .prodImg {
@@ -269,7 +314,7 @@ html {
     padding-bottom: 15px;
 }
 
-.footerColor{
+.footerColor {
     background-color: rgb(243, 241, 243);
 }
 
@@ -279,7 +324,7 @@ html {
     align-items: center;
 }
 
-.footerSmall2{
+.footerSmall2 {
     padding-top: 5px;
 }
 
@@ -301,7 +346,7 @@ html {
     margin-top: 10px;
 }
 
-.feedback{
+.feedback {
     display: flex;
     align-items: center;
     justify-content: end;
@@ -309,31 +354,31 @@ html {
     padding-top: 15px;
 }
 
-.fotofeedback{
+.fotofeedback {
     width: 150px;
     padding-left: 20px;
 }
 
 
-.notFoundTtxt{
+.notFoundTtxt {
     color: rgb(245, 60, 60);
     font-size: 60px;
     font-weight: bold;
     margin-top: 20px;
 }
 
-.notFoundTtxt2{
+.notFoundTtxt2 {
     font-size: 25px;
 }
 
-.fotoNotFound{
+.fotoNotFound {
     width: 200px;
 }
 
 
+/* @media screen and (max-width: 981px) { */
 
-
-@media screen and (max-width: 981px) {
+@media screen and (max-width: 991px) {
     .burgerMenu {
         display: block;
     }
@@ -344,8 +389,6 @@ html {
 
     .zakazBtn {
         margin-top: 10px;
-        width: 120px;
-        height: 30px;
         font-size: 14px;
     }
 
@@ -357,6 +400,7 @@ html {
     .logoBig {
         margin-top: 10px;
     }
+
     .carousMain {
         margin-top: 10px;
     }
@@ -366,6 +410,7 @@ html {
     .footerUl {
         display: none;
     }
+
     .footerSmall {
         display: flex;
     }
@@ -375,6 +420,7 @@ html {
     .productUL {
         display: none;
     }
+
     .burgerMenu2 {
         display: block;
     }
@@ -392,6 +438,7 @@ html {
         padding-left: 5px;
         width: 400px;
     }
+
     .proNasText {
         padding-left: 20px;
         padding-right: 20px;
@@ -403,6 +450,7 @@ html {
         padding-left: 30px;
         width: 350px;
     }
+
     .proNasText {
         padding-left: 20px;
         padding-right: 20px;
@@ -414,9 +462,10 @@ html {
         padding-left: 40px;
         width: 350px;
     }
+
     .proNasText {
         padding-left: 20px;
         padding-right: 20px;
     }
-    
+
 }

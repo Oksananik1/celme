@@ -70,7 +70,7 @@ const AppContact = () => {
                     id="phone"
                     name="phone"
                     pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$"
-                    minlength="10" maxlength="14" 
+                    minLength="10" maxLength="14" 
                     placeholder="0670000000"
                     aria-describedby="emailHelp"
                   ></input>

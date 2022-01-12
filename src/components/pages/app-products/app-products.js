@@ -1,30 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Link, useParams} from "react-router-dom";
+import Product from "../../modules/product";
 
-
-function Product(props) {
-  return (
-    <div className="col-lg-3 col-md-6 col-sm-12 prodVid">
-      <div className="card cardWidth">
-        <img
-          src={props.value.photo}
-          className="card-img-top "
-          alt={props.value.name}
-        ></img>
-        <div className="card-body cardText">
-          <h5 className="card-title">{props.value.name}</h5>
-          <p className="card-text">
-            {props.value.smallDescr}
-          </p>
-          <h5 className="priceNumb">{props.value.price}</h5>
-          <Link to={"/productItem/"+props.value._id} className="btn prodBtn">
-            Детальніше
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 
 function ProductList(props) {
@@ -71,8 +48,8 @@ function AppProducts() {
   const groupEn = params.group;
   const group = getGroupName(groupEn);
   return (
-    <div className="container product" id="productMain">
-      <div className="row justify-content-between mr-1">
+    <div className="container product">
+      <div className="row justify-content-between mb-5 mt-5">
         <div>
           <h2 className="kontZagol">Наш товар</h2>
         </div>
@@ -159,7 +136,6 @@ export default AppProducts;
 
 
 function getGroupName(groupEn){
-  console.log(groupEn)
   let group = ""
   switch (groupEn) {
     case "slicers":
@@ -180,6 +156,5 @@ function getGroupName(groupEn){
      default: 
      group="Слайсери";
   }
-  console.log(group)
 return group;
 }

@@ -1,14 +1,56 @@
 import React, { Component, useState, useEffect } from "react";
-import Product from "../../../../modules/product"
+import Product from "../../../../modules/product";
 
+function NavTabs(props) {
+  return (
+    <li className="nav-item">
+      <a
+        href={"#"+props.value.enName}
+        className={"nav-link menu "+(props.value.isActive?"active":"")} 
+        id={props.value.enName+"-tab"}
+        data-toggle="tab"
+        role="tab"
+        aria-controls={props.value.enName}
+        aria-selected="true" >
+        <span>{props.value.name}</span>
+      </a>
+    </li>
+  );
+}
+function BurgerBtn(props) {
+  return (
+    <li className={(props.value.isActive?"active":"")} role="presentation">
+    <a
+      href={"#"+props.value.enName}
+      className="dropdown-item menu"
+      role="tab"
+      data-toggle="tab"
+      onClick={() => this.changeBurgerLabel(props.value.name)}
+    >
+      {props.value.name}
+    </a>
+  </li>
+  );
+}
 
-
+function GroupTab(props) {
+  return (
+              <div
+                className={"tab-pane fade show "+(props.value.isActive?"active":"")} 
+                id={props.value.enName}
+                role="tabpanel"
+                aria-labelledby={props.value.enName+"-tab"}
+              >
+                <ProductList group={props.value.name} />
+              </div>
+  );
+}
 
 function ProductList(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  
+
   // Примечание: пустой массив зависимостей [] означает, что
   // этот useEffect будет запущен один раз
   // аналогично componentDidMount()
@@ -27,7 +69,7 @@ function ProductList(props) {
           setError(error);
         }
       );
-  },[]);
+  }, []);
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;
@@ -46,15 +88,32 @@ class AppProductList extends Component {
     super(props);
     this.changeBurgerLabel = this.changeBurgerLabel.bind(this);
     this.state = {
-     burgerMenuLabel:"Слайсери",
+      burgerMenuLabel: "Слайсери",
+      groupList: [
+        { name: "Слайсери", enName: "slayser", isActive: true },
+        { name: "М'ясорубки", enName: "myasorubka", isActive: false },
+        { name: "Куттери", enName: "kuttery", isActive: false },
+        { name: "Овочерізки", enName: "ovocherezka", isActive: false },
+        { name: "Обладнання для піцерії", enName: "oblPizza", isActive: false },
+      ]
     };
   }
-
-   changeBurgerLabel=(name)=>{
-    this.setState({burgerMenuLabel:name})
-  }
+  changeBurgerLabel = (name) => {
+    this.setState({ burgerMenuLabel: name });
+  };
 
   render() {
+    const groupElementsNavTabs = this.state.groupList.map((gr) => (
+      <NavTabs key={gr.enName} value={gr} />
+    ));
+    const groupElementsBurgerBtn = this.state.groupList.map((gr) => (
+      <BurgerBtn key={gr.enName} value={gr} />
+    ));
+
+    const groupElementsGroupTab = this.state.groupList.map((gr) => (
+      <GroupTab key={gr.enName} value={gr} />
+    ));
+
     return (
       <div className="container product">
         <div className="row justify-content-between mr-1">
@@ -63,66 +122,7 @@ class AppProductList extends Component {
           </div>
           <div>
             <ul className="nav nav-tabs productUL" id="myTab" role="tablist">
-              <li className="nav-item">
-                <a
-                  href="#slayser"
-                  className="nav-link menu active"
-                  id="slayser-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="slayser"
-                  aria-selected="true"
-                ><span>Слайсери</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  href="#myasorubka"
-                  className="nav-link menu"
-                  id="myasorubka-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="myasorubka"
-                  aria-selected="false"
-                ><span>М'ясорубки</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  href="#kuttery"
-                  className="nav-link menu"
-                  id="kuttery-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="kuttery"
-                  aria-selected="false"
-                ><span>Куттери</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  href="#ovocherezka"
-                  className="nav-link menu"
-                  id="ovocherezka-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="ovocherezka"
-                  aria-selected="false"
-                ><span>Овочерізки</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  href="#oblPizza"
-                  className="nav-link menu"
-                  id="oblPizza-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="oblPizza"
-                  aria-selected="false"
-                ><span>Обладнання для піцерії</span>
-                </a>
-              </li>
+              {groupElementsNavTabs}
             </ul>
           </div>
           <div className="dropdown burgerMenu2" role="tablist">
@@ -142,93 +142,14 @@ class AppProductList extends Component {
               role="tablist"
             >
               <ul className="nav nav-tabs" role="tablist">
-                <li className="active" role="presentation">
-                  <a
-                    href="#slayser"
-                    className="dropdown-item menu"
-                    role="tab"
-                    data-toggle="tab" onClick={() => this.changeBurgerLabel("Слайсери")}
-                  >
-                    Слайсери
-                  </a>
-                </li>
-                <li role="presentation">
-                  <a
-                    href="#myasorubka"
-                    className="dropdown-item menu"
-                    role="tab"
-                    data-toggle="tab" onClick={() => this.changeBurgerLabel("М'ясорубки")}
-                  >
-                    М'ясорубки
-                  </a>
-                </li>
-                <li role="presentation">
-                  <a href="#kuttery" className="dropdown-item menu" 
-                  role="tab"
-                  data-toggle="tab" onClick={() => this.changeBurgerLabel("Куттери")}>
-                    Куттери
-                  </a>
-                </li>
-                <li role="presentation">
-                  <a href="#ovocherezka" className="dropdown-item menu" 
-                  role="tab"
-                  data-toggle="tab" onClick={() => this.changeBurgerLabel("Овочерізки")}>
-                    Овочерізки
-                  </a>
-                </li>
-                <li role="presentation">
-                  <a href="#oblPizza" className="dropdown-item menu" 
-                  role="tab"
-                  data-toggle="tab" onClick={() => this.changeBurgerLabel("Обладнання для піцерії")}>
-                    Обладнання для піцерії
-                  </a>
-                </li>
+                {groupElementsBurgerBtn}
               </ul>
             </div>
           </div>
 
           <div className="mt-3">
             <div className="tab-content" id="myTabContent">
-              <div
-                className="tab-pane fade show active"
-                id="slayser"
-                role="tabpanel"
-                aria-labelledby="slayser-tab"
-              >
-                <ProductList group="Слайсери" />
-              </div>
-              <div
-                className="tab-pane fade"
-                id="myasorubka"
-                role="tabpanel"
-                aria-labelledby="myasorubka-tab"
-              >
-                <ProductList group="М'ясорубки" />
-              </div>
-              <div
-                className="tab-pane fade"
-                id="kuttery"
-                role="tabpanel"
-                aria-labelledby="contact-tab"
-              >
-                <ProductList group="Куттери" />
-              </div>
-              <div
-                className="tab-pane fade"
-                id="ovocherezka"
-                role="tabpanel"
-                aria-labelledby="ovocherezka-tab"
-              >
-                <ProductList group="Овочерізки" />
-              </div>
-              <div
-                className="tab-pane fade"
-                id="oblPizza"
-                role="tabpanel"
-                aria-labelledby="oblPizza-tab"
-              >
-                <ProductList group="Обладнання для піцерії" />
-              </div>
+              {groupElementsGroupTab}
             </div>
           </div>
         </div>

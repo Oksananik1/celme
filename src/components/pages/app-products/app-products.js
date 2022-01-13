@@ -3,6 +3,27 @@ import { Link, useParams} from "react-router-dom";
 import Product from "../../modules/product";
 
 
+function NavTabs(props) {
+  return (
+    <li className="nav-item">
+    <Link to={"/products/"+props.value.enName} 
+    className={(props.currentGroup===props.value.name ? "nav-link active1 menu" : "nav-link menu")}>
+      {props.value.name}
+    </Link>
+  </li>
+  );
+}
+function BurgerBtn(props) {
+  return (
+    <Link to={"/products/"+props.value.enName}
+              className={(props.currentGroup===props.value.name ? "dropdown-item active1 menu" : "dropdown-item menu")}>
+                {props.value.name}
+              </Link>
+  );
+}
+
+
+
 
 function ProductList(props) {
   const [error, setError] = useState(null);
@@ -47,6 +68,22 @@ function AppProducts() {
   const params = useParams();
   const groupEn = params.group;
   const group = getGroupName(groupEn);
+  const groupList= [
+    { name: "Слайсери", enName: "slayser", isActive: true },
+    { name: "М'ясорубки", enName: "myasorubka", isActive: false },
+    { name: "Куттери", enName: "kuttery", isActive: false },
+    { name: "Овочерізки", enName: "ovocherezka", isActive: false },
+    { name: "Обладнання для піцерії", enName: "oblPizza", isActive: false },
+  ]
+
+  const groupElementsNavTabs = groupList.map((gr) => (
+    <NavTabs key={gr.enName} value={gr} currentGroup={group} />
+  ));
+  const groupElementsBurgerBtn = groupList.map((gr) => (
+    <BurgerBtn key={gr.enName} value={gr} currentGroup={group}/>
+  ));
+
+
   return (
     <div className="container product">
       <div className="row justify-content-between mb-5 mt-5">
@@ -56,36 +93,7 @@ function AppProducts() {
        
         <div>
           <ul className="nav nav-tabs productUL">
-            <li className="nav-item">
-              <Link to={"/products/slicers"} 
-              className={(group==="Слайсери" ? "nav-link active1 menu" : "nav-link menu")}>
-                Слайсери
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/products/mincer"} 
-              className={(group==="М'ясорубки" ? "nav-link active1 menu" : "nav-link menu")}>
-                М'ясорубки
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/products/cutters"} 
-              className={(group==="Куттери" ? "nav-link active1 menu" : "nav-link menu")}>
-                Куттери
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/products/vegetable_slicers"} 
-              className={(group==="Овочерізки" ? "nav-link active1 menu" : "nav-link menu")}>
-                Овочерізки
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/products/pizzeria_equipment"} 
-              className={(group==="Обладнання для піцерії" ? "nav-link active1 menu" : "nav-link menu")}>
-                Обладнання для піцерії
-              </Link>
-            </li>
+            {groupElementsNavTabs}
           </ul>
           <div className="dropdown burgerMenu2">
             <button
@@ -102,26 +110,7 @@ function AppProducts() {
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-              <Link to={"/products/slicers"} 
-              className={(group==="Слайсери" ? "dropdown-item active1 menu" : "dropdown-item menu")}>
-                Слайсери
-              </Link>
-              <Link to={"/products/mincer"} 
-              className={(group==="М'ясорубки" ? "dropdown-item active1 menu" : "dropdown-item menu")}>
-                М'ясорубки
-              </Link>
-              <Link to={"/products/cutters"} 
-              className={(group==="Куттери" ? "dropdown-item active1 menu" : "dropdown-item menu")}>
-                Куттери
-              </Link>
-              <Link to={"/products/vegetable_slicers"} 
-              className={(group==="Овочерізки" ? "dropdown-item active1 menu" : "dropdown-item menu")}>
-                Овочерізки
-              </Link>
-              <Link to={"/products/pizzeria_equipment"} 
-              className={(group==="Обладнання для піцерії" ? "dropdown-item active1 menu" : "dropdown-item menu")}>
-                Обладнання для піцерії
-              </Link>
+             {groupElementsBurgerBtn}
             </div>
           </div>
         </div>

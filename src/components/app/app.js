@@ -7,7 +7,7 @@ import AppHeader from "../modules/app-header";
 import AppFooter from '../modules/app-footer';
 import AppGarant from '../pages/app-garant';
 import AppDostavka from '../pages/app-dostavka';
-import AppContaсt from '../pages/app-contaсt';
+import AppContaсt from '../pages/app-contact';
 import AppProductItem from "../pages/app-productItem";
 import AppProducts from "../pages/app-products";
 import NotFound from "../pages/app-notFound";

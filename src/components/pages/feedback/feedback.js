@@ -8,11 +8,11 @@ const Feedback = () => {
 
         <div className="col-6 feedback">
           <p className="feedbackText">
-            Ваше повідомлення надіслано. <br/>
+            Ваше повідомлення надіслано. <br />
             Ми обов'язково Вам відповімо.
           </p>
-          </div>
-          <div className="col-6">
+        </div>
+        <div className="col-6">
           <img
             src="/images/feedbackKonvert.png"
             className="fotofeedback"

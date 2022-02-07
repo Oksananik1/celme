@@ -1,6 +1,12 @@
+import React, { useEffect } from "react";
+
 const AppONas = () => {
+  useEffect(() => {
+    document.title = `Про нас`;
+  });
+
   return (
-<div className="container oNAS">
+    <div className="container oNAS">
       <div className="row">
         <div className="col-12 mb-4 kontZagol text-center">
           <h2>Про нас</h2>

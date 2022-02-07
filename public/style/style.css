@@ -45,8 +45,6 @@ body {
     margin-left: auto;
 }
 
-
-
 .logoBig {
     display: flex;
     justify-content: center;
@@ -375,6 +373,35 @@ body {
     width: 200px;
 }
 
+.documDiv{
+    margin-top: 10px;
+}
+
+.documDiv li:hover{
+    color: rgb(245, 60, 60);
+    text-decoration: none;
+}
+
+.documLink{
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(65, 61, 61);
+    text-decoration: underline;
+}
+
+.documLink:hover{
+    color: rgb(245, 60, 60);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.videoDiv{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: rgb(65, 61, 61);
+    font-size: 17px;
+    font-weight: bold;
+}
 
 /* @media screen and (max-width: 981px) { */
 

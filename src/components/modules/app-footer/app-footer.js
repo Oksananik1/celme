@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const AppFooter = () => {
   return (
@@ -9,34 +9,84 @@ const AppFooter = () => {
             <div className="col-12">
               <ul className="nav justify-content-between footerUl">
                 <li className="nav-item  ">
-                  <Link to={'/about'} className="nav-link menu">
+                  <NavLink
+                    to={"/about"}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link menu active1" : "nav-link menu"
+                    }
+                  >
                     ПРО НАС
-                  </Link>
+                  </NavLink>
                 </li>
-                <li className="nav-item">
-                  <Link to={'/about'} className="nav-link menu">
+                {/* <li className="nav-item">
+                  <NavLink
+                    to={"/about"}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link menu active1" : "nav-link menu"
+                    }
+                  >
                     АКЦІЇ
-                  </Link>
-                </li>
+                  </NavLink>
+                </li> */}
                 <li className="nav-item">
-                  <Link to={'/products/slicers'} className="nav-link menu">
+                  <NavLink
+                    to={"/products/slicers"}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link menu active1" : "nav-link menu"
+                    }
+                  >
                     ПРОДУКЦІЯ
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/garant'} className="nav-link menu">
+                  <NavLink
+                    to={"/garant"}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link menu active1" : "nav-link menu"
+                    }
+                  >
                     ГАРАНТІЯ
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/dostavka'} className="nav-link menu">
+                  <NavLink
+                    to={"/dostavka"}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link menu active1" : "nav-link menu"
+                    }
+                  >
                     ДОСТАВКА ТА ОПЛАТА
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/contact'} className="nav-link menu">
+                  <NavLink
+                    to={"/contact"}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link menu active1" : "nav-link menu"
+                    }
+                  >
                     КОНТАКТИ
-                  </Link>
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to={"/document"}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link menu active1" : "nav-link menu"
+                    }
+                  >
+                    ДОКУМЕНТАЦІЯ
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to={"/video"}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link menu active1" : "nav-link menu"
+                    }
+                  >
+                    ВІДЕО
+                  </NavLink>
                 </li>
               </ul>
               <div className="row justify-content-between ml-2 mr-2 footerSmall">

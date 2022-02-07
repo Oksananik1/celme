@@ -2,16 +2,29 @@ import React, { Component, useState, useEffect } from "react";
 import Product from "../../../../modules/product";
 
 function NavTabs(props) {
+  const OpenTab = (name) => {
+    console.log(name);
+    window.ga(
+      "send",
+      "event",
+      "Вкладки на центральній сторінці",
+      "Відкриття",
+      name
+    );
+  };
+
   return (
     <li className="nav-item">
       <a
-        href={"#"+props.value.enName}
-        className={"nav-link menu "+(props.value.isActive?"active":"")} 
-        id={props.value.enName+"-tab"}
+        href={"#" + props.value.enName}
+        className={"nav-link menu " + (props.value.isActive ? "active" : "")}
+        id={props.value.enName + "-tab"}
         data-toggle="tab"
         role="tab"
         aria-controls={props.value.enName}
-        aria-selected="true" >
+        aria-selected="true"
+        onClick={() => OpenTab(props.value.name)}
+      >
         <span>{props.value.name}</span>
       </a>
     </li>
@@ -19,30 +32,30 @@ function NavTabs(props) {
 }
 function BurgerBtn(props) {
   return (
-    <li className={(props.value.isActive?"active":"")} role="presentation">
-    <a
-      href={"#"+props.value.enName}
-      className="dropdown-item menu"
-      role="tab"
-      data-toggle="tab"
-      onClick={() => this.changeBurgerLabel(props.value.name)}
-    >
-      {props.value.name}
-    </a>
-  </li>
+    <li className={props.value.isActive ? "active" : ""} role="presentation">
+      <a
+        href={"#" + props.value.enName}
+        className="dropdown-item menu"
+        role="tab"
+        data-toggle="tab"
+        onClick={() => this.changeBurgerLabel(props.value.name)}
+      >
+        {props.value.name}
+      </a>
+    </li>
   );
 }
 
 function GroupTab(props) {
   return (
-              <div
-                className={"tab-pane fade show "+(props.value.isActive?"active":"")} 
-                id={props.value.enName}
-                role="tabpanel"
-                aria-labelledby={props.value.enName+"-tab"}
-              >
-                <ProductList group={props.value.name} />
-              </div>
+    <div
+      className={"tab-pane fade show " + (props.value.isActive ? "active" : "")}
+      id={props.value.enName}
+      role="tabpanel"
+      aria-labelledby={props.value.enName + "-tab"}
+    >
+      <ProductList group={props.value.name} />
+    </div>
   );
 }
 
@@ -62,8 +75,6 @@ function ProductList(props) {
           setIsLoaded(true);
           setItems(result);
         },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
         (error) => {
           setIsLoaded(true);
           setError(error);
@@ -90,12 +101,16 @@ class AppProductList extends Component {
     this.state = {
       burgerMenuLabel: "Слайсери",
       groupList: [
-        { name: "Слайсери", enName: "slayser", isActive: true },
-        { name: "М'ясорубки", enName: "myasorubka", isActive: false },
-        { name: "Куттери", enName: "kuttery", isActive: false },
-        { name: "Овочерізки", enName: "ovocherezka", isActive: false },
-        { name: "Обладнання для піцерії", enName: "oblPizza", isActive: false },
-      ]
+        { name: "Слайсери", enName: "slicers", isActive: true },
+        { name: "М'ясорубки", enName: "mincer", isActive: false },
+        { name: "Куттери", enName: "cutters", isActive: false },
+        { name: "Овочерізки", enName: "vegetable_slicers", isActive: false },
+        {
+          name: "Обладнання для піцерії",
+          enName: "pizzeria_equipment",
+          isActive: false,
+        },
+      ],
     };
   }
   changeBurgerLabel = (name) => {

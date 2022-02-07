@@ -36,9 +36,9 @@ function AppProductItem() {
         (result) => {
           setProduct(result);
           setIsLoaded(true);
+          document.title = `${result.name}`;
         },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
+
         (error) => {
           setError(error);
           setIsLoaded(true);
@@ -57,7 +57,8 @@ function AppProductItem() {
           <div className="col-12 m-5 zakazBtnStrelka">
             <Link
               to={"/products/" + getGroupName(product.group)}
-              className="btn zakazBtn">
+              className="btn zakazBtn"
+            >
               <img src="/images/strelka.png" alt="strelka"></img>
               {product.group}
             </Link>

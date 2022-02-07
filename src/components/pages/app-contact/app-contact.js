@@ -1,13 +1,12 @@
-
-
+import React, { useEffect } from "react";
 
 const AppContact = () => {
-
-
-
+  useEffect(() => {
+    // Обновляем заголовок документа с помощью API браузера
+    document.title = `Контакти`;
+  });
 
   return (
-      
     <div className="container kontakt" id="kontaktMain">
       <div className="row">
         <div className="col-12 mb-3 kontZagol text-center">
@@ -70,7 +69,8 @@ const AppContact = () => {
                     id="phone"
                     name="phone"
                     pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$"
-                    minLength="10" maxLength="14" 
+                    minLength="10"
+                    maxLength="14"
                     placeholder="0670000000"
                     aria-describedby="emailHelp"
                   ></input>
@@ -101,7 +101,8 @@ const AppContact = () => {
               <input
                 type="submit"
                 className="kontBtn"
-                value="ВІДПРАВИТИ"></input>
+                value="ВІДПРАВИТИ"
+              ></input>
             </div>
           </form>
         </div>

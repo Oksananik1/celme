@@ -1,40 +1,48 @@
-import React, {useState, useEffect} from "react";
-import { Link, useParams} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import Product from "../../modules/product";
-
 
 function NavTabs(props) {
   return (
     <li className="nav-item">
-    <Link to={"/products/"+props.value.enName} 
-    className={(props.currentGroup===props.value.name ? "nav-link active1 menu" : "nav-link menu")}>
-      {props.value.name}
-    </Link>
-  </li>
+      <Link
+        to={"/products/" + props.value.enName}
+        className={
+          props.currentGroup === props.value.name
+            ? "nav-link active1 menu"
+            : "nav-link menu"
+        }
+      >
+        {props.value.name}
+      </Link>
+    </li>
   );
 }
 function BurgerBtn(props) {
   return (
-    <Link to={"/products/"+props.value.enName}
-              className={(props.currentGroup===props.value.name ? "dropdown-item active1 menu" : "dropdown-item menu")}>
-                {props.value.name}
-              </Link>
+    <Link
+      to={"/products/" + props.value.enName}
+      className={
+        props.currentGroup === props.value.name
+          ? "dropdown-item active1 menu"
+          : "dropdown-item menu"
+      }
+    >
+      {props.value.name}
+    </Link>
   );
 }
-
-
-
 
 function ProductList(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-// Примечание: пустой массив зависимостей [] означает, что
+  // Примечание: пустой массив зависимостей [] означает, что
   // этот useEffect будет запущен один раз
   // аналогично componentDidMount()
   useEffect(() => {
-    fetch("http://celme-zt.pp.ua/celmeapi/product/list?gr="+props.group)
-      .then(res => res.json())
+    fetch("http://celme-zt.pp.ua/celmeapi/product/list?gr=" + props.group)
+      .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
@@ -46,21 +54,19 @@ function ProductList(props) {
           setIsLoaded(true);
           setError(error);
         }
-      )
-  }, [props.group])
+      );
+  }, [props.group]);
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;
   } else if (!isLoaded) {
     return <div>Загрузка...</div>;
   } else {
+    const data = items.map((product, index) => (
+      <Product key={index} value={product} />
+    ));
 
-
-  const data = items.map((product, index) => (
-    <Product key={index} value={product} />
-  ));
-
-  return <div className="row justify-content-between mb-5">{data}</div>;
+    return <div className="row justify-content-between mb-5">{data}</div>;
   }
 }
 
@@ -68,21 +74,29 @@ function AppProducts() {
   const params = useParams();
   const groupEn = params.group;
   const group = getGroupName(groupEn);
-  const groupList= [
-    { name: "Слайсери", enName: "slayser", isActive: true },
-    { name: "М'ясорубки", enName: "myasorubka", isActive: false },
-    { name: "Куттери", enName: "kuttery", isActive: false },
-    { name: "Овочерізки", enName: "ovocherezka", isActive: false },
-    { name: "Обладнання для піцерії", enName: "oblPizza", isActive: false },
-  ]
+  const groupList = [
+    { name: "Слайсери", enName: "slicers", isActive: true },
+    { name: "М'ясорубки", enName: "mincer", isActive: false },
+    { name: "Куттери", enName: "cutters", isActive: false },
+    { name: "Овочерізки", enName: "vegetable_slicers", isActive: false },
+    {
+      name: "Обладнання для піцерії",
+      enName: "pizzeria_equipment",
+      isActive: false,
+    },
+  ];
 
   const groupElementsNavTabs = groupList.map((gr) => (
     <NavTabs key={gr.enName} value={gr} currentGroup={group} />
   ));
   const groupElementsBurgerBtn = groupList.map((gr) => (
-    <BurgerBtn key={gr.enName} value={gr} currentGroup={group}/>
+    <BurgerBtn key={gr.enName} value={gr} currentGroup={group} />
   ));
 
+  useEffect(() => {
+    // Обновляем заголовок документа с помощью API браузера
+    document.title = `${group}`;
+  });
 
   return (
     <div className="container product">
@@ -90,11 +104,9 @@ function AppProducts() {
         <div>
           <h2 className="kontZagol">Наш товар</h2>
         </div>
-       
+
         <div>
-          <ul className="nav nav-tabs productUL">
-            {groupElementsNavTabs}
-          </ul>
+          <ul className="nav nav-tabs productUL">{groupElementsNavTabs}</ul>
           <div className="dropdown burgerMenu2">
             <button
               className="btn dropdown-toggle burgerMenuBtn"
@@ -104,13 +116,13 @@ function AppProducts() {
               aria-haspopup="true"
               aria-expanded="false"
             >
-             {group}
+              {group}
             </button>
             <div
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="dropdownMenuButton"
             >
-             {groupElementsBurgerBtn}
+              {groupElementsBurgerBtn}
             </div>
           </div>
         </div>
@@ -120,30 +132,30 @@ function AppProducts() {
   );
 }
 
-
 export default AppProducts;
 
-
-function getGroupName(groupEn){
-  let group = ""
+function getGroupName(groupEn) {
+  console.log(groupEn);
+  let group = "";
   switch (groupEn) {
     case "slicers":
-      group="Слайсери"
-    break;
+      group = "Слайсери";
+      break;
     case "mincer":
-      group="М'ясорубки"
-    break;
+      group = "М'ясорубки";
+      break;
     case "cutters":
-      group="Куттери"
-    break;
+      group = "Куттери";
+      break;
     case "vegetable_slicers":
-      group="Овочерізки"
-    break;
+      group = "Овочерізки";
+      break;
     case "pizzeria_equipment":
-      group="Обладнання для піцерії"
-     break;
-     default: 
-     group="Слайсери";
+      group = "Обладнання для піцерії";
+      break;
+    default:
+      group = "Слайсери";
   }
-return group;
+  console.log(group);
+  return group;
 }

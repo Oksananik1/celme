@@ -1,9 +1,12 @@
-
+import React, { useEffect } from "react";
 import AppProductList from "./modules/app-product-list/app-product-list";
 import { Link } from "react-router-dom";
 
-
 const AppMain = () => {
+  useEffect(() => {
+    document.title = `Celme`;
+  });
+
   return (
     <>
       <div className="container">
@@ -14,7 +17,9 @@ const AppMain = () => {
                 <img src="/images/logo.png" alt="foto" />
               </div>
               <div className="col-12">
-                <Link to={'/contact'} className="btn zakazBtn"> Замовити зараз
+                <Link to={"/contact"} className="btn zakazBtn">
+                  {" "}
+                  Замовити зараз
                 </Link>
               </div>
             </div>
